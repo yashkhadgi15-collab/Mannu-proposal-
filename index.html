@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yash's Proposal to Mannu</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #ffe6f2; padding: 50px; color: #333; }
+        h1 { color: #d63384; }
+        img { max-width: 300px; border-radius: 10px; margin: 20px 0; }
+        button { padding: 15px 30px; font-size: 18px; margin: 10px; border: none; border-radius: 5px; cursor: pointer; transition: all 0.3s; }
+        .yes { background-color: #28a745; color: white; }
+        .no { background-color: #dc3545; color: white; position: relative; }
+        .hidden { display: none; }
+        .date-section { margin-top: 30px; }
+        input[type="date"] { padding: 10px; font-size: 16px; margin: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Hey Mannu, This is Yash...</h1>
+    <p>I've been wanting to tell you this for a while. You're the most amazing person I know, and I can't imagine my life without you. Will you be my girlfriend?</p>
+    <img src="https://via.placeholder.com/300x200?text=Add+Your+Photo+Here" alt="A special photo for Mannu">
+    
+    <div id="proposal">
+        <button class="yes" onclick="sayYes()">Yes!</button>
+        <button class="no" id="noBtn" onmouseover="moveNo()" onclick="tryAgain()">No</button>
+    </div>
+    
+    <div id="dateSection" class="hidden date-section">
+        <h2>Yay! Let's plan our first date. Pick a date:</h2>
+        <input type="date" id="datePicker">
+        <button class="yes" onclick="confirmDate()">Confirm Date</button>
+        <button class="no" id="noDateBtn" onmouseover="moveNoDate()" onclick="tryAgainDate()">Not yet</button>
+    </div>
+    
+    <div id="finalMessage" class="hidden">
+        <h2>Perfect! I can't wait. Love you, Mannu! 💕</h2>
+        <p>Reply to me at [your contact info] to confirm.</p>
+    </div>
+
+    <script>
+        function sayYes() {
+            document.getElementById('proposal').classList.add('hidden');
+            document.getElementById('dateSection').classList.remove('hidden');
+        }
+        
+        function moveNo() {
+            const noBtn = document.getElementById('noBtn');
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 100);
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+            noBtn.style.position = 'absolute';
+        }
+        
+        function tryAgain() {
+            alert("Are you sure? Think again! 😊");
+            // Still proceed to date section after alert
+            document.getElementById('proposal').classList.add('hidden');
+            document.getElementById('dateSection').classList.remove('hidden');
+        }
+        
+        function confirmDate() {
+            const date = document.getElementById('datePicker').value;
+            if (date) {
+                document.getElementById('dateSection').classList.add('hidden');
+                document.getElementById('finalMessage').classList.remove('hidden');
+                document.getElementById('finalMessage').innerHTML = `<h2>Perfect! Our date is set for ${date}. I can't wait, Mannu! 💕</h2><p>Reply to me at [your contact info] to confirm.</p>`;
+            } else {
+                alert("Please pick a date!");
+            }
+        }
+        
+        function moveNoDate() {
+            const noDateBtn = document.getElementById('noDateBtn');
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 100);
+            noDateBtn.style.left = x + 'px';
+            noDateBtn.style.top = y + 'px';
+            noDateBtn.style.position = 'absolute';
+        }
+        
+        function tryAgainDate() {
+            alert("Come on, Mannu! Let's make it happen! 😘");
+            // Persist and keep the date section open
+        }
+    </script>
+</body>
+</html>
